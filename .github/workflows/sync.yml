@@ -1,13 +1,10 @@
 name: 同步 fongmi 分支到 fm 分支
-
 on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -17,81 +14,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
       - name: 配置 Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: 添加源仓库
         run: git remote add fongmi https://github.com/FongMi/Release.git
-
       - name: 获取源仓库 fongmi 分支
         run: git fetch fongmi fongmi
-
-      - name: 强制推送到本仓库的 fm 分支
-        run: git push origin fongmi/fongmi:refs/heads/fm --forcename: 同步 fongmi 分支到 fm 分支
-
-on:
-  schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 检出目标仓库
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-
-      - name: 配置 Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: 添加源仓库
-        run: git remote add fongmi https://github.com/FongMi/Release.git
-
-      - name: 获取源仓库 fongmi 分支
-        run: git fetch fongmi fongmi
-
-      - name: 强制推送到本仓库的 fm 分支
-        run: git push origin fongmi/fongmi:refs/heads/fm --forcename: 同步 fongmi 分支到 fm 分支
-
-on:
-  schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 检出目标仓库
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-
-      - name: 配置 Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: 添加源仓库
-        run: git remote add fongmi https://github.com/FongMi/Release.git
-
-      - name: 获取源仓库 fongmi 分支
-        run: git fetch fongmi fongmi
-
       - name: 强制推送到本仓库的 fm 分支
         run: git push origin fongmi/fongmi:refs/heads/fm --force
