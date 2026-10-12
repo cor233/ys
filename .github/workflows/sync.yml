@@ -1,4 +1,4 @@
-name: 同步 fongmi 分支到 fm 分支
+name: fongmi sync fm 
 on:
   schedule:
     - cron: '0 0 * * *'
